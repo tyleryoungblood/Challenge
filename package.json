@@ -9,6 +9,8 @@
   "author": "Tyler Youngblood",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.7.1"
+    "angular": "^1.7.1",
+    "angular-route": "^1.7.1",
+    "http-server": "^0.11.1"
   }
 }
