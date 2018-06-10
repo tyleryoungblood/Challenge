@@ -62,6 +62,16 @@ challengeApp.controller('editController', function($scope, $location, Restangula
   };
 });
 
+challengeApp.controller('createController', function($scope, $location, Restangular){
+  $scope.save = function () {
+    // POST /tools
+    Restangular.all('tools').post($scope.tool).then(function(tool) {
+      //reload list when done
+      $location.path('/');
+    });
+  };
+});
+
 // create routes @ configure restangular
 challengeApp.config(function($routeProvider, $locationProvider, RestangularProvider, mongolab) {
 
@@ -72,10 +82,8 @@ challengeApp.config(function($routeProvider, $locationProvider, RestangularProvi
         templateUrl:'views/home.html'
       })
 
-      // // TODO: remove edit button
-      //if user clicks edit button
-      .when('/edit', {
-        controller:'editController',
+      .when('/new', {
+        controller:'createController',
         templateUrl:'views/edit.html'
       })
 
