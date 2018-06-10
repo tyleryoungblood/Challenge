@@ -13,47 +13,83 @@ challengeApp.constant('mongolab', {
 challengeApp.controller('toolController', [
     '$scope',
     'Restangular',
-    function($scope, Restangular) {
+    '$log',
+    '$location',
+    function($scope, Restangular, $log, $location) {
       var Tool = Restangular.all('tools');
 
       $scope.gridData = Tool.getList().then(function (response) {
-          //strip extra object data out of response
+          //strip extra object data out of response using .plain()
           $scope.gridData = response.plain();
-          console.log($scope.gridData);
       });
 
       //$scope.gridData = $scope.gridData.plain();
       $scope.gridOptions = {
         data: 'gridData',
         columnDefs: [
-          {field:'name', displayName: 'Name'},
-          {field:'description', displayName:'Description', wordwrap: true, width: "*"}  ],
+          {field:'name', displayName: 'Name',
+          cellTemplate:'<div class="ngCellText" ng-class="col.colIndex()"><a ng-click="loadById(row)">{{row.getProperty(col.field)}}</a></div>' },
+          {field:'description', displayName:'Description', wordwrap: true, width: "*"}],
         plugins: [new ngGridFlexibleHeightPlugin()]
+      };
+
+      $scope.loadById = function ( row ) {
+        console.log(row.entity._id);
+        $location.path( "/edit/" + row.entity._id.$oid);
       };
     }
   ]);
 
-challengeApp.controller('editController', function($scope) {
-    $scope.message = "This is the edit page.";
+
+challengeApp.controller('editController', function($scope, $location, Restangular, tool){
+  var original = tool;
+  $scope.tool = Restangular.copy(original);
+
+  $scope.isClean = function() {
+    return angular.equals(original, $scope.tool);
+  };
+
+  $scope.destroy = function() {
+    original.remove().then(function() {
+      $location.path('/');
+    });
+  };
+
+  $scope.save = function() {
+    $scope.tool.put().then(function() {
+      $location.path('/');
+    });
+  };
 });
 
-// create routes
+// create routes @ configure restangular
 challengeApp.config(function($routeProvider, $locationProvider, RestangularProvider, mongolab) {
+
     $routeProvider
 
-        .when('/', {
-          templateUrl : 'views/home.html',
-          controller  : 'toolController'
-        })
+      .when('/', {
+        controller:'toolController',
+        templateUrl:'views/home.html'
+      })
 
-        .when('/edit', {
-          templateUrl : 'views/edit.html',
-          controller  : 'editController'
-        })
+      // // TODO: remove edit button
+      //if user clicks edit button
+      .when('/edit', {
+        controller:'editController',
+        templateUrl:'views/edit.html'
+      })
 
-        .otherwise({
-          redirectTo: '/'
-        });
+      .when('/edit/:toolId', {
+        controller:'editController',
+        templateUrl:'views/edit.html',
+        resolve: {
+          tool: function(Restangular, $route){
+            return Restangular.one('tools', $route.current.params.toolId).get();
+          }
+        }
+      })
+
+      .otherwise({redirectTo:'/'});
 
     //remove the hash prefix from the URL for pretty URLs
     $locationProvider.hashPrefix('');
@@ -67,7 +103,5 @@ challengeApp.config(function($routeProvider, $locationProvider, RestangularProvi
     RestangularProvider.setRestangularFields({
       id: '_id.$oid'
     });
-
-
 
 });
