@@ -27,7 +27,7 @@ challengeApp.config(function($routeProvider, $locationProvider) {
 
         .when('/', {
           templateUrl : 'views/home.html',
-          controller  : 'mainController'
+          controller  : 'toolController'
         })
 
         .when('/edit', {
