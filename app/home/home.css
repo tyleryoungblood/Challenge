@@ -1,0 +1,14 @@
+.ngGrid {
+  margin-top: 3em;
+}
+
+/* fix sytling of anchors inside ng-grid so that they look clickable */
+a:not([href]):not([tabindex]) {
+  color: #007bff;
+
+}
+
+a:not([href]):not([tabindex]):hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
