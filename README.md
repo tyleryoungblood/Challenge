@@ -14,9 +14,10 @@ A small single page application built using the following technologies:
 2.  Run `npm install`
 3.  Run `http-server` from the terminal and point your browser to http://127.0.0.1:8080 or whatever resulting address is for your machine
 
-## Requirements not met:
+## Possible Improvements:
 
-- Currently to edit a list item you must click on the item name. This may need to be reworked so that a user can select a single row and then click an edit button to be taken to the edit page.
+- Incorporate Gulp into build process to allow for things like live reloading (Browsersync), css preprocessing (Styless), minification, and linting. Currently excluded to keep the project as clean and minimal as possible.
+- Currently to edit a list item you must click on the item name. This may need to be reworked so that a user can select a single row and then click an edit button to be taken to the edit page. I wasn't sure if this requirement was arbitrary or could be changed.
 - Currently using `put` instead of `patch` to create new list items, as well as for editing existing list items. This is due to a a resulting `Method PATCH is not allowed by Access-Control-Allow-Methods in preflight response` error that I have yet to resolve when using `patch` to edit an existing entry (`patch` works for creating new entries).
 
 ## Issues:
