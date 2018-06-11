@@ -1,4 +1,4 @@
-var challengeApp = angular.module('challengeApp', ['ngRoute', 'ngGrid', 'restangular']);
+var challengeApp = angular.module('challengeApp', ['ngRoute', 'ngGrid', 'restangular', 'ui.bootstrap']);
 
 
 // mLabs resource url
@@ -26,10 +26,11 @@ challengeApp.controller('toolController', [
       //$scope.gridData = $scope.gridData.plain();
       $scope.gridOptions = {
         data: 'gridData',
+        enableRowSelection: true,
         columnDefs: [
-          {field:'name', displayName: 'Name',
-          cellTemplate:'<div class="ngCellText" ng-class="col.colIndex()"><a ng-click="loadById(row)">{{row.getProperty(col.field)}}</a></div>' },
-          {field:'description', displayName:'Description', wordwrap: true, width: "*"}],
+          {field:'name', displayName: 'Name', width:"20%",
+          cellTemplate:'<div class="ngCellText" ng-class="col.colIndex()"><a class="link" ng-click="loadById(row)">{{row.getProperty(col.field)}}</a></div>' },
+          {field:'description', displayName:'Description', wordwrap: true, width: "80%"}],
         plugins: [new ngGridFlexibleHeightPlugin()]
       };
 

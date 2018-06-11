@@ -1,17 +1,32 @@
-<div class="jumbotron text-center">
-    <h1>Edit Page</h1>
+<div class="wrapper">
+  <div class="container edit-container">
+    <h1 class="text-center">Edit Tool Details</h1>
 
-    <form name="toolForm">
-      <input type="text" ng-model="tool.name" placeholder="Name">
-      <input type="text" ng-model="tool.description" placeholder="Description">
+    <form class="text-left" name="toolForm">
 
-      <a href="#/" class="btn">Cancel</a>
-      <button ng-click="save()"
-              ng-disabled="isClean() || toolForm.$invalid"
-              class="btn btn-primary">Save</button>
-      <button ng-click="destroy()"
-              ng-show="tool._id"
-              class="btn btn-danger">Delete</button>
+      <label for="toolname">Name</label>
+      <input type="text" id="toolname" ng-model="tool.name" tabindex="1">
+
+      <label for="description">Description</label>
+      <input type="text" id="description" ng-model="tool.description" tabindex="2">
+
+      <div class="text-right">
+
+        <button ng-click="save()"
+                ng-disabled="isClean() || toolForm.$invalid"
+                class="btn btn-primary"
+                tabindex="3"><span class="shortcut">S</span>ave</button>
+
+        <button href="#/"
+                class="btn btn-secondary"
+                tabindex="4">Cancel</button>
+
+        <button ng-click="destroy()"
+                ng-show="tool._id"
+                class="btn btn-link text-danger"
+                tabindex="5">Delete</button>
+      </div>
+
     </form>
-
+  </div>
 </div>

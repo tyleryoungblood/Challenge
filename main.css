@@ -1,0 +1,29 @@
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.ngGrid {
+  margin-top: 3em;
+}
+
+a:not([href]):not([tabindex]) {
+  color: #007bff;
+
+}
+
+a:not([href]):not([tabindex]):hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* css to make form have spacing above and below in a 1:1.5 ratio*/
+
+.edit-container {
+  position: absolute;
+  top: 33%;
+  bottom: 66%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
