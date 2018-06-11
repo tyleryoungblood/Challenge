@@ -1,49 +1,47 @@
 <!DOCTYPE html>
-    <html ng-app="challengeApp">
-    <head>
-      <!-- load bootstrap and fontawesome via CDN -->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-      <link rel="stylesheet" href="node_modules/ng-grid/ng-grid.css" />
-      <link rel="stylesheet" href="main.css">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Post Interview Challenge</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/ng-grid/ng-grid.css" />
+    <link rel="stylesheet" href="main.css">
+</head>
+<body ng-app="challengeApp" ng-controller="ToolCtrl">
 
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-      <script src="node_modules/angular/angular.js"></script>
-      <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
-      <script src="node_modules/angular-route/angular-route.js"></script>
-      <script src="node_modules/ng-grid/ng-grid-2.0.1.debug.js"></script>
-      <script src="node_modules/ng-grid/plugins/ng-grid-flexible-height.js"></script>
-      <script src="node_modules/lodash/lodash.min.js"></script>
-      <script src="node_modules/restangular/dist/restangular.min.js"></script>
-
-      <script src="scripts.js"></script>
-
-    </head>
-    <body ng-controller="toolController">
-
-        <!-- HEADER AND NAVBAR -->
-        <header>
-            <nav class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/">Post Interview Challenge</a>
-                </div>
-
-                <ul class="nav justify-content-end">
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#new"><i class="fa fa-plus"></i> New Tool</a></li>
-                </ul>
+    <!-- HEADER AND NAVBAR -->
+    <header>
+        <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Post Interview Challenge</a>
             </div>
-            </nav>
-        </header>
 
-        <!-- MAIN CONTENT AND INJECTED VIEWS -->
-        <div id="main">
-
-            <!-- this is where content from views will be injected -->
-            <div ng-view></div>
-
+            <ul class="nav justify-content-end">
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-home"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#new"><i class="fa fa-plus"></i> New Tool</a></li>
+            </ul>
         </div>
+        </nav>
+    </header>
 
-    </body>
-    </html>
+    <!-- MAIN CONTENT AND INJECTED VIEWS -->
+    <div id="main">
+
+        <!-- this is where content from views will be injected -->
+        <div ng-view></div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/ng-grid/ng-grid-2.0.1.debug.js"></script>
+    <script src="node_modules/ng-grid/plugins/ng-grid-flexible-height.js"></script>
+    <script src="node_modules/lodash/lodash.min.js"></script>
+    <script src="node_modules/restangular/dist/restangular.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>

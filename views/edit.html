@@ -12,19 +12,11 @@
 
       <div class="text-right">
 
-        <button ng-click="save()"
-                ng-disabled="isClean() || toolForm.$invalid"
-                class="btn btn-primary"
-                tabindex="3">Ok</button>
+        <button ng-click="save()" ng-disabled="isClean() || toolForm.$invalid" class="btn btn-primary" tabindex="3">Ok</button>
 
-        <button href="#/"
-                class="btn btn-secondary"
-                tabindex="4">Cancel</button>
+        <button ng-click="cancel()" class="btn btn-secondary" tabindex="4">Cancel</button>
 
-        <button ng-click="destroy()"
-                ng-show="tool._id"
-                class="btn btn-link text-danger"
-                tabindex="5">Delete</button>
+        <button ng-click="destroy()" ng-show="tool._id" class="btn btn-link text-danger" tabindex="5">Delete</button>
       </div>
 
     </form>
